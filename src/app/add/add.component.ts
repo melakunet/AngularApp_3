@@ -12,6 +12,7 @@ import { Book } from '../book';
   styleUrl: './add.component.css'
 })
 export class AddComponent {
+  // Initialize an empty book object to bind to the form
   book: Book = {
     title: '',
     author: '',
@@ -20,16 +21,18 @@ export class AddComponent {
     price: 0
   };
 
+  // Inject BookService to send book data to the PHP backend
   constructor(private bookService: BookService) {}
 
+  // Called when the form is submitted
   onSubmit() {
     this.bookService.addBook(this.book).subscribe({
       next: (res) => {
         alert('Book added successfully!');
-        // Reset the form
+        // Reset the form after successful submission
         this.book = { title: '', author: '', description: '', price: 0, type: '' };
       },
-      error: (e) => console.error('Error adding book', e)
+      error: (e) => console.error('Error adding book', e)  // Log any errors
     });
   }
 }
