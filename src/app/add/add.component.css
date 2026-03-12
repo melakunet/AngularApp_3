@@ -1,0 +1,10 @@
+/* Simple styles for the add component */
+.container {
+  max-width: 600px; /* Limit form width */
+}
+form {
+  margin-top: 20px;
+}
+input.ng-invalid.ng-touched {
+  border-color: red; /* Highlight invalid fields after user touches them */
+}

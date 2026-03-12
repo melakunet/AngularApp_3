@@ -1,0 +1,18 @@
+<div class="container mt-4">
+  <h2>Book List</h2>
+  
+  <!-- Display message if no books -->
+  <div *ngIf="books.length === 0" class="alert alert-info">
+    No books found. Why not add one?
+  </div>
+
+  <!-- List of books -->
+  <ul class="list-group">
+    <li *ngFor="let book of books" class="list-group-item">
+      <h5>{{ book.title }}</h5>
+      <p class="mb-1">By: {{ book.author }} <span class="badge bg-secondary ms-2">{{ book.type || 'Book' }}</span></p>
+      <p class="mb-1">{{ book.description }}</p>
+      <small class="text-muted">Price: ${{ book.price }}</small>
+    </li>
+  </ul>
+</div>

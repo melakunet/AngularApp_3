@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Reader Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/list" routerLinkActive="active">Book List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add" routerLinkActive="active">Add Book</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mb-4">
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Welcome to Reader Home</h1>
+      <p class="col-md-8 fs-4">This application helps you manage your personal library. You can browse your collection, check book details, and add new titles easily. Keep track of your reading list with our simple and intuitive interface.</p>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer mt-auto py-3 bg-light text-center border-top">
+  <div class="container">
+    <span class="text-muted">Assignment 3 for Angular course at triOS College by Etefworkie Melaku, March 2026.</span>
+  </div>
+</footer>

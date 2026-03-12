@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <h2>Add New Book</h2>
+  
+  <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+    
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <!-- Using ngModel with required validation -->
+      <input 
+        type="text" 
+        class="form-control" 
+        id="title" 
+        [(ngModel)]="book.title" 
+        name="title" 
+        required 
+        placeholder="Enter book title">
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Author:</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="author" 
+        [(ngModel)]="book.author" 
+        name="author" 
+        required 
+        placeholder="Enter author's name">
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Type:</label>
+      <select 
+        class="form-select" 
+        id="type" 
+        [(ngModel)]="book.type" 
+        name="type" 
+        required>
+        <option value="" disabled selected>Select book type</option>
+        <option value="Paperback">Paperback</option>
+        <option value="Audiobook">Audiobook</option>
+        <option value="Hardcover">Hardcover</option>
+        <option value="E-Book">E-Book</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea 
+        class="form-control" 
+        id="description" 
+        [(ngModel)]="book.description" 
+        name="description" 
+        rows="3" 
+        placeholder="Enter book description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price ($):</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="price" 
+        [(ngModel)]="book.price" 
+        name="price" 
+        required 
+        step="0.01" 
+        placeholder="0.00">
+    </div>
+
+    <!-- Disable button if form is invalid -->
+    <button type="submit" class="btn btn-primary" [disabled]="!bookForm.form.valid">
+      Add Book
+    </button>
+  </form>
+</div>
