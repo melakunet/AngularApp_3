@@ -1,8 +1,28 @@
-/* Simple styles for the list component */
-.container {
-  max-width: 800px;
+/* Custom styling for the Book Cards */
+.book-card {
+  /* Give the card a slightly transparent background to contrast with main body */
+  background-color: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(10px); /* Frosted glass effect for modern look */
+  transition: all 0.3s ease-in-out;
+  border-radius: 16px;
 }
-.list-group-item {
-  margin-bottom: 5px;
-  border-radius: 5px;
+
+/* Hover effect when the user hovers over the book */
+.book-card:hover {
+  transform: translateY(-8px); /* Lift the card up slightly */
+  background-color: rgba(255, 255, 255, 1); /* Remove transparency on hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important; /* Larger shadow */
+  cursor: pointer;
+}
+
+/* Clean text formatting for the book description */
+.book-description {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Make quote box look elegant */
+.quote-box {
+  background-color: rgba(248, 249, 250, 0.85);
+  border-left: 5px solid #0d6efd;
 }
