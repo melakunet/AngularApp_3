@@ -1,25 +1,17 @@
 # Reader Home (AngularApp3)
 
-**Assignment 3 for Angular Development Course**
+**Assignment 5 for Angular Development Course**
 **Course Code:** MWD4B (Angular)
 **Student:** Etefworkie Melaku
-**Date:** March 2026
-
-## Project Overview
-
-This is a comprehensive Book Management Application built with Angular 19 and a PHP/MySQL backend. It demonstrates key Angular concepts including:
-- **HTTP Client:** Communicating with a RESTful API (PHP) to perform CRUD operations.
-- **Routing:** Navigating between a Book List view and an Add Book form.
-- **Services:** Encapsulating data access logic in a reusable `BookService`.
-- **Component Design:** Breaking down the UI into modular `ListComponent` and `AddComponent`.
-- **UI/UX:** Responsive design using Bootstrap 5, featuring a navigation bar, welcome section, and footer.
+**Date:** April 2026
 
 ## Features
 
-- **Book List:** View all books in the library with their details (Title, Author, Type, Price).
-- **Add Book:** A form to add new books to the collection, including selecting the book type (Paperback, Audiobook, etc.).
-- **Book Types:** Support for different formats: Paperback, Audiobook, Hardcover, E-Book.
-- **Backend Integration:** Full connecting to a MySQL database via PHP scripts.
+- **Book List:** View all books with cover images, type badge, and price.
+- **Add Book:** Form to add a new book with optional cover image upload.
+- **Edit Book:** Pre-filled form to update book details and replace the cover image.
+- **Delete Book:** Delete a book from the list with a confirmation prompt.
+- **File Upload:** Book cover images stored in `backend/uploads/`.
 
 ## Setup Instructions
 

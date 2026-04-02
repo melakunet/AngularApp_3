@@ -7,24 +7,32 @@ import { Book } from './book';
   providedIn: 'root'
 })
 export class BookService {
-  // Base URL for our XAMPP PHP backend
   private baseUrl = 'http://localhost/AngularApp3/backend';
 
-  // Inject HttpClient so we can make GET, POST, DELETE requests
   constructor(private http: HttpClient) { }
 
-  // Get all books from the database
+  // Returns all books
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/list.php`);
   }
 
-  // Send a new book to the database via POST
+  // Returns a single book by ID
+  getBook(id: number): Observable<Book> {
+    return this.http.get<Book>(`${this.baseUrl}/view.php?id=${id}`);
+  }
+
+  // Adds a new book
   addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(`${this.baseUrl}/add.php`, book);
   }
 
-  // Delete a book by its ID using a query parameter
+  // Deletes a book by ID
   deleteBook(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete.php?id=${id}`);
+  }
+
+  // Sends updated book data including optional image as FormData
+  updateBook(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}/update.php`, formData);
   }
 }

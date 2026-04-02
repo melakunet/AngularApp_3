@@ -21,36 +21,43 @@
     <p class="mb-0">Why not add your first wonderful read?</p>
   </div>
 
-  <!-- Card Grid for Books: Changed to row-cols-md-2 so it shows exactly 2 books per line, spaced out beautifully (g-5) -->
-  <div class="row row-cols-1 row-cols-md-2 g-5 mt-2 mb-5">
+  <!-- Card Grid — 3 columns on large screens, 2 on medium, 1 on mobile -->
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-2 mb-5">
     <div class="col" *ngFor="let book of books">
-      <!-- book-card class applies our custom hover and opacity effects from the CSS file -->
-      <div class="card h-100 shadow-sm border-0 book-card p-2">
-        <!-- Card Body -->
-        <div class="card-body d-flex flex-column">
-          <!-- Type Badge -->
-          <div class="mb-2">
-            <span class="badge rounded-pill bg-secondary px-3 py-2 shadow-sm">{{ book.type || 'Book' }}</span>
+      <div class="card h-100 shadow-sm border-0 book-card">
+
+        <!-- Portrait cover wrapper — shows image or a placeholder -->
+        <div class="book-cover-wrapper">
+          <img *ngIf="book.imageName"
+               [src]="'http://localhost/AngularApp3/backend/uploads/' + book.imageName"
+               class="book-cover"
+               alt="Cover of {{ book.title }}">
+          <!-- Placeholder shown when no cover image is uploaded -->
+          <div *ngIf="!book.imageName" class="book-cover-placeholder">
+            <i class="bi bi-book"></i>
+            <span>No Cover</span>
           </div>
-          
-          <h4 class="card-title fw-bold text-dark mt-2 mb-1">{{ book.title }}</h4>
-          <h6 class="card-subtitle mb-3 text-muted">by <span class="fst-italic">{{ book.author }}</span></h6>
-          
-          <!-- Book description -->
-          <p class="card-text text-secondary mt-2 mb-4 book-description">
-            {{ book.description }}
-          </p>
         </div>
-        
+
+        <!-- Card Body -->
+        <div class="card-body d-flex flex-column p-3">
+          <div class="mb-2">
+            <span class="badge rounded-pill bg-secondary px-3 py-1">{{ book.type || 'Book' }}</span>
+          </div>
+          <h5 class="card-title fw-bold text-dark mt-1 mb-1">{{ book.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">by <span class="fst-italic">{{ book.author }}</span></h6>
+          <p class="card-text text-secondary book-description flex-grow-1">{{ book.description }}</p>
+        </div>
+
         <!-- Card Footer -->
-        <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between align-items-center pb-3 px-3">
-          <span class="fw-bold fs-4 text-success">${{ book.price }}</span>
-          
-          <!-- Delete button using (click) event with Angular Data Binding -->
-          <button class="btn btn-outline-danger px-4 rounded-pill" (click)="deleteBook(book.id)">
-            Delete
-          </button>
+        <div class="card-footer bg-transparent border-top d-flex justify-content-between align-items-center py-2 px-3">
+          <span class="fw-bold fs-5 text-success">${{ book.price }}</span>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary btn-sm rounded-pill px-3" [routerLink]="['/update', book.id]">Edit</button>
+            <button class="btn btn-outline-danger btn-sm rounded-pill px-3" (click)="deleteBook(book.id)">Delete</button>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

@@ -1,4 +1,9 @@
 <?php
+// Allow Angular frontend to access this script
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
 // Connect to the database
 require 'db.php';
 
@@ -14,10 +19,10 @@ if(isset($data) && !empty($data)) {
     $author = mysqli_real_escape_string($conn, $data->author);
     $description = mysqli_real_escape_string($conn, $data->description);
     $price = mysqli_real_escape_string($conn, $data->price);
-    $type = mysqli_real_escape_string($conn, $data->type ?? 'Paperback'); // Default to Paperback if missing
+    $type = mysqli_real_escape_string($conn, $data->type ?? 'Paperback');
+    $imageName = mysqli_real_escape_string($conn, $data->imageName ?? '');
 
-    // Create the SQL query to insert the new book
-    $sql = "INSERT INTO books (title, author, description, price, type) VALUES ('$title', '$author', '$description', '$price', '$type')";
+    $sql = "INSERT INTO books (title, author, description, price, type, imageName) VALUES ('$title', '$author', '$description', '$price', '$type', '$imageName')";
 
     // Run the query and see if it works
     if($conn->query($sql) === TRUE) {
@@ -28,7 +33,8 @@ if(isset($data) && !empty($data)) {
             'author' => $author,
             'description' => $description,
             'price' => $price,
-            'type' => $type
+            'type' => $type,
+            'imageName' => $imageName
         ];
         echo json_encode($book);
     } else {

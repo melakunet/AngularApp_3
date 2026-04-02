@@ -1,0 +1,8 @@
+/* Styles for the update book form */
+.container {
+  max-width: 600px;
+}
+
+.form-group label {
+  font-weight: 500;
+}

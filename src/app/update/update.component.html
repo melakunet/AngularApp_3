@@ -1,50 +1,51 @@
 <div class="container mt-4">
-  <h2>Add New Book</h2>
+  <h2>Update Book</h2>
 
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #f="ngForm" (ngSubmit)="updateBook(f)">
 
     <div class="form-group mb-3">
-      <label>Title:</label>
+      <label>Title</label>
       <input type="text" name="title" class="form-control"
-             [(ngModel)]="book.title" required placeholder="Enter book title">
+             [(ngModel)]="book.title" required maxlength="255">
     </div>
 
     <div class="form-group mb-3">
-      <label>Author:</label>
+      <label>Author</label>
       <input type="text" name="author" class="form-control"
-             [(ngModel)]="book.author" required placeholder="Enter author's name">
+             [(ngModel)]="book.author" required maxlength="255">
     </div>
 
+    <!-- Select dropdown so the existing type value is pre-selected -->
     <div class="form-group mb-3">
-      <label>Type:</label>
+      <label>Type</label>
       <select name="type" class="form-control" [(ngModel)]="book.type" required>
-        <option value="" disabled selected>Select book type</option>
         <option value="Paperback">Paperback</option>
-        <option value="Audiobook">Audiobook</option>
         <option value="Hardcover">Hardcover</option>
+        <option value="Audiobook">Audiobook</option>
         <option value="E-Book">E-Book</option>
       </select>
     </div>
 
     <div class="form-group mb-3">
-      <label>Description:</label>
+      <label>Description</label>
       <textarea name="description" class="form-control" rows="3"
-                [(ngModel)]="book.description" placeholder="Enter book description"></textarea>
+                [(ngModel)]="book.description"></textarea>
     </div>
 
     <div class="form-group mb-3">
-      <label>Price ($):</label>
+      <label>Price ($)</label>
       <input type="number" name="price" class="form-control"
-             [(ngModel)]="book.price" required step="0.01" placeholder="0.00">
+             [(ngModel)]="book.price" required step="0.01">
     </div>
 
     <div class="form-group mb-3">
-      <label>Cover Image (optional):</label>
+      <label>Upload New Cover Image (optional)</label>
       <input type="file" name="image" class="form-control"
              (change)="onFileSelected($event)">
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add Book</button>
+    <button type="submit" class="btn btn-primary me-2" [disabled]="f.invalid">Update Book</button>
+    <button type="button" class="btn btn-secondary" routerLink="/list">Cancel</button>
 
     <div *ngIf="success" class="alert alert-success mt-3">{{ success }}</div>
     <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>

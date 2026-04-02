@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS books (
   author VARCHAR(255) NOT NULL,
   description TEXT,
   price DECIMAL(10, 2) NOT NULL,
-  type VARCHAR(50) NOT NULL DEFAULT 'Paperback'
+  type VARCHAR(50) NOT NULL DEFAULT 'Paperback',
+  imageName VARCHAR(255) DEFAULT ''
 );
 
 INSERT INTO books (title, author, description, price, type) VALUES 

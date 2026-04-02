@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
+import { UpdateComponent } from './update/update.component';
 
-// Define the application routes for navigation
+// Application routes
 export const routes: Routes = [
-  { path: 'list', component: ListComponent },   // Route to display all books
-  { path: 'add', component: AddComponent },      // Route to add a new book
-  { path: '', redirectTo: '/list', pathMatch: 'full' }  // Default redirect to /list
+  { path: 'list', component: ListComponent },
+  { path: 'add', component: AddComponent },
+  { path: 'update/:id', component: UpdateComponent },
+  { path: 'delete', redirectTo: '/list', pathMatch: 'full' },
+  { path: '', redirectTo: '/list', pathMatch: 'full' }
 ];
