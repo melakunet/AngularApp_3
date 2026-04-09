@@ -11,6 +11,13 @@ CREATE TABLE IF NOT EXISTS books (
   imageName VARCHAR(255) DEFAULT ''
 );
 
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userName VARCHAR(100) NOT NULL UNIQUE,
+  emailAddress VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+
 INSERT INTO books (title, author, description, price, type) VALUES 
 ('The Great Gatsby', 'F. Scott Fitzgerald', 'A novel set in the Jazz Age.', 10.99, 'Paperback'),
 ('1984', 'George Orwell', 'A dystopian social science fiction novel.', 8.99, 'Audiobook');

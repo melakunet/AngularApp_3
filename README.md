@@ -1,17 +1,19 @@
 # Reader Home (AngularApp3)
 
-**Assignment 5 for Angular Development Course**
+**Assignment 6 for Angular Development Course**
 **Course Code:** MWD4B (Angular)
 **Student:** Etefworkie Melaku
 **Date:** April 2026
 
 ## Features
 
+- **Login:** Users must log in to access the book list and forms.
+- **Register:** New users can create an account with username, email, and password.
 - **Book List:** View all books with cover images, type badge, and price.
 - **Add Book:** Form to add a new book with optional cover image upload.
 - **Edit Book:** Pre-filled form to update book details and replace the cover image.
 - **Delete Book:** Delete a book from the list with a confirmation prompt.
-- **File Upload:** Book cover images stored in `backend/uploads/`.
+- **Logout:** Clears session and returns user to the login page.
 
 ## Setup Instructions
 

@@ -5,12 +5,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
+      <!-- Show book links only when logged in -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item" *ngIf="authService.getAuth()">
           <a class="nav-link" routerLink="/list" routerLinkActive="active">Book List</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="authService.getAuth()">
           <a class="nav-link" routerLink="/add" routerLinkActive="active">Add Book</a>
+        </li>
+      </ul>
+      <!-- Show login/register when logged out, logout when logged in -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" *ngIf="!authService.getAuth()">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!authService.getAuth()">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="authService.getAuth()">
+          <span class="nav-link text-white-50">Hello, {{ authService.getUsername() }}</span>
+        </li>
+        <li class="nav-item" *ngIf="authService.getAuth()">
+          <a class="nav-link" href="#" (click)="logout(); $event.preventDefault()">Logout</a>
         </li>
       </ul>
     </div>
@@ -18,7 +34,7 @@
 </nav>
 
 <div class="container mb-4">
-  <div class="p-5 mb-4 bg-light rounded-3">
+  <div class="p-5 mb-4 bg-light rounded-3" *ngIf="authService.getAuth()">
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Welcome to Reader Home</h1>
       <p class="col-md-8 fs-4">This application helps you manage your personal library. You can browse your collection, check book details, and add new titles easily. Keep track of your reading list with our simple and intuitive interface.</p>
@@ -30,6 +46,6 @@
 
 <footer class="footer mt-auto py-3 bg-light text-center border-top">
   <div class="container">
-    <span class="text-muted">Assignment 5 for Angular course at triOS College by Etefworkie Melaku, April 2026.</span>
+    <span class="text-muted">Assignment 6 for Angular course at triOS College by Etefworkie Melaku, April 2026.</span>
   </div>
 </footer>
